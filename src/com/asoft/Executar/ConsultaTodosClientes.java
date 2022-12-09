@@ -24,7 +24,7 @@ public class ConsultaTodosClientes {
 				System.out.println("Nome: "+ cliente.getNome());
 				System.out.println("Telefone: "+ cliente.getTelefone());
 				
-				System.out.println("---------------------------------");
+				System.out.println("***************************************");
 			}
 			
 			
