@@ -10,7 +10,6 @@ public class Cliente {
 	
 	private String telefone;
 
-	
 	public Long getCodigo() {
 		return codigo;
 	}
