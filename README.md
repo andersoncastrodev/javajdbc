@@ -1,0 +1,4 @@
+- Mini curd usando JDBC e java. 
+- Banco de dados mysql 8
+- Nome do banco de dados: bdjdbc
+- Tabela criada:cliente
