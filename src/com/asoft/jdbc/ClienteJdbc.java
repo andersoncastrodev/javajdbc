@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.asoft.dao.ClienteDao;
 import com.asoft.exceptions.DaoException;
@@ -78,6 +80,47 @@ public class ClienteJdbc implements ClienteDao {
 		}
 		
 		return cliente;
+	}
+
+	@Override
+	public List<Cliente> buscaTodosCliente() {
+		
+		List<Cliente> clienteLista = new ArrayList<Cliente>();
+		
+		String sql = String.format("select * from cliente");
+		
+		try {
+			
+			PreparedStatement ps = this.connection.prepareStatement(sql);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				Cliente cliente = new Cliente();
+				cliente = new Cliente();
+				cliente.setCodigo(rs.getLong("codigo"));
+				cliente.setNome(rs.getString("nome"));
+				cliente.setTelefone(rs.getString("telefone"));
+				
+				clienteLista.add(cliente);
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			//Criando minha propria exceção
+			throw new DaoException("Erro salvando cliente",e);
+		}finally {
+			try {
+				this.connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return clienteLista;
 	}
 	
 	
